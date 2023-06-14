@@ -21,13 +21,9 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
-import { ContentSkeleton, ContentError } from "./Display";
 import CopyLink from "./CopyLink";
 
 function InstanceCard({ instance }) {
-  const [loadedBanner, setLoadedBanner] = React.useState(false);
-  const [bannerError, setBannerError] = React.useState(false);
-
   // const [loadedIcon, setLoadedIcon] = React.useState(false);
 
   // const [iconError, setIconError] = React.useState(false);
@@ -84,34 +80,6 @@ function InstanceCard({ instance }) {
             </Typography>
           </Box>
         </CardContent>
-
-        <CardOverflow
-          sx={{
-            p: 0,
-            minHeight: "120px",
-            maxHeight: "200px",
-            overflow: "hidden",
-            borderRadius: 0,
-          }}
-        >
-          {!instance.banner && <ContentError message={"No Banner"} bgcolor={"#ff55fc21"} />}
-          {instance.banner && bannerError && <ContentError />}
-          {instance.banner && !bannerError && !loadedBanner && <ContentSkeleton />}
-          <img
-            src={instance.banner}
-            srcSet={instance.banner}
-            loading="lazy"
-            width={"100%"}
-            style={{
-              display: loadedBanner ? "flex" : "none",
-            }}
-            onLoad={() => {
-              setLoadedBanner(true);
-              setBannerError(false);
-            }}
-            onError={() => setBannerError(true)}
-          />
-        </CardOverflow>
         <CardContent orientation="horizontal">
           <div>
             <Typography level="body3">{instance.desc}</Typography>

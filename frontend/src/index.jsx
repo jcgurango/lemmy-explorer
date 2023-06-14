@@ -51,8 +51,7 @@ export default function App() {
           }}
         >
           <BrowserRouter>
-            <Header />
-            <Box sx={{ overflow: "auto", height: "calc(100% - 80px)" }}>
+            <Box sx={{ overflow: "auto", height: "calc(100% - 80px)", paddingTop: '16px' }}>
               <Routes>
                 {/* <Route
                   index
@@ -62,15 +61,20 @@ export default function App() {
                 <Route
                   index
                   // path="/instances"
-                  element={<Instances />}
+                  element={<Communities />}
+                />
+                <Route
+                  path="/:instanceBaseUrl"
+                  // path="/instances"
+                  element={<Communities />}
                 />
                 <Route path="/join" element={<Join />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/communities" element={<Communities />} />
-                <Route path="/communities/:instanceBaseUrl" element={<Communities />} />
                 {/* <Route path="*" element={<NoMatch />} /> */}
               </Routes>
             </Box>
+            <Header />
           </BrowserRouter>
         </Container>
       </QueryClientProvider>

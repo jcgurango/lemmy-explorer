@@ -267,53 +267,6 @@ export default function TabsVariants() {
         Lemmy Explorer
       </Typography>
       <Box sx={{ flexGrow: 1 }} />
-      <Tabs
-        value={index}
-        onChange={(event, value) => {
-          console.log("value", value);
-          setIndex(value);
-
-          if (value === 0) {
-            navigate("/");
-          }
-          if (value === 1) {
-            navigate("/communities");
-          }
-        }}
-        sx={{ borderRadius: "lg" }}
-      >
-        <TabList variant="soft">
-          <Badge
-            badgeContent={isSuccess && metaData.instances}
-            max={999}
-            color="info"
-            variant={"solid"}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <Tab variant={index === 0 ? "solid" : "soft"} color={index === 0 ? "info" : "neutral"}>
-              Instances
-            </Tab>
-          </Badge>
-
-          <Badge
-            badgeContent={isSuccess && metaData.communities}
-            max={9999}
-            variant={"solid"}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <Tab variant={index === 1 ? "solid" : "soft"} color={index === 1 ? "primary" : "neutral"}>
-              Communities
-            </Tab>
-          </Badge>
-        </TabList>
-      </Tabs>
-      <Box sx={{ flexGrow: 1 }} />
 
       <RightSideMenu />
     </Box>
