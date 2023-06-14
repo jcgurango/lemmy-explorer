@@ -80,10 +80,10 @@ export async function start(args) {
       const crawler = new CrawlInstance();
       for (var baseUrl of START_URLS) {
         console.log('Creating seed job: ' + baseUrl);
-        crawler.createJob(baseUrl);
+        await crawler.createJob(baseUrl);
       }
       // crawler.createJob("lemmy.tgxn.net");
-      return;
+      return process.exit(0);
     }
   } else {
     console.info("no args, starting all crawler workers");

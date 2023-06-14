@@ -54,9 +54,9 @@ export default class CrawlInstance {
     if (isWorker) this.process();
   }
 
-  createJob(instanceBaseUrl) {
+  async createJob(instanceBaseUrl) {
     const job = this.queue.createJob({ baseUrl: instanceBaseUrl });
-    job
+    await job
       .timeout(CRAWL_TIMEOUT.INSTANCE)
       .retries(CRAWL_RETRY.INSTANCE)
       .setId(instanceBaseUrl) // deduplicate

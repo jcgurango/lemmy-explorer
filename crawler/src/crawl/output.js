@@ -306,17 +306,11 @@ export default class CrawlOutput {
       JSON.stringify(returnStats)
     );
 
-    const packageJson = JSON.parse(
-      await readFile(new URL("../../package.json", import.meta.url))
-    );
-
     const metaData = {
       instances: storeData.length,
       communities: storeCommunityData.length,
       fediverse: returnStats.length,
       time: Date.now(),
-      package: packageJson.name,
-      version: packageJson.version,
     };
     await this.writeJsonFile(
       "../frontend/public/meta.json",

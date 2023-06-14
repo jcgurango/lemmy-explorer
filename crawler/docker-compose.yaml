@@ -7,5 +7,20 @@ services:
   crawler:
     build:
       context: .
+    image: base
     depends_on:
       - redis
+  init:
+    image: base
+    entrypoint: npm run start:init
+    depends_on:
+      - redis
+    profiles:
+      - donotstart
+  out:
+    image: base
+    entrypoint: npm run out > /out.json
+    volumes:
+      - ./output:/usr/src/frontend/public/
+    profiles:
+      - donotstart
