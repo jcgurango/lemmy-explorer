@@ -63,11 +63,11 @@ export async function start(args) {
     }
 
     // start specific queue workers
-    if (args[0] == "-q" && args[1] == "instance") {
+    if (args.indexOf('-q') > -1 && args[args.indexOf('-q') + 1] == "instance") {
       console.info("Starting Instance Processor");
       new CrawlInstance(true);
       return;
-    } else if (args[0] == "-q" && args[1] == "community") {
+    } else if (args.indexOf('-q') > -1 && args[args.indexOf('-q') + 1] == "community") {
       console.info("Starting Community Processor");
       new CrawlCommunity(true);
 
@@ -79,6 +79,7 @@ export async function start(args) {
       console.warn("--init passed, creating seed jobs");
       const crawler = new CrawlInstance();
       for (var baseUrl of START_URLS) {
+        console.log('Creating seed job: ' + baseUrl);
         crawler.createJob(baseUrl);
       }
       // crawler.createJob("lemmy.tgxn.net");

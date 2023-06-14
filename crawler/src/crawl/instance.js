@@ -20,6 +20,7 @@ import {
   CRAWLER_USER_AGENT,
   CRAWLER_ATTRIB_URL,
   AXIOS_REQUEST_TIMEOUT,
+  REDIS_URL,
 } from "../lib/const.js";
 
 import { CrawlError, CrawlWarning } from "../lib/error.js";
@@ -30,6 +31,9 @@ export default class CrawlInstance {
       removeOnSuccess: true,
       removeOnFailure: true,
       isWorker,
+      redis: {
+        url: REDIS_URL,
+      },
     });
 
     // report failures!

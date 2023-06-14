@@ -9,6 +9,7 @@ import {
   AXIOS_REQUEST_TIMEOUT,
   CRAWLER_USER_AGENT,
   CRAWLER_ATTRIB_URL,
+  REDIS_URL,
 } from "../lib/const.js";
 
 import { CrawlError } from "../lib/error.js";
@@ -19,6 +20,9 @@ export default class CrawlCommunity {
       removeOnSuccess: true,
       removeOnFailure: true,
       isWorker,
+      redis: {
+        url: REDIS_URL,
+      },
     });
 
     this.axios = axios.create({

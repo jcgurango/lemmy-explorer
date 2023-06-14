@@ -15,6 +15,7 @@
     "start:init": "node index.js --init",
     "start:dev:instance": "node index.js -q instance",
     "start:dev:community": "node index.js -q community",
+    "start:docker": "pm2 start --no-daemon ecosystem.config.cjs",
     "out": "node index.js --out"
   },
   "dependencies": {
